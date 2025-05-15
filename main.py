@@ -18,9 +18,10 @@ sgd_df['epoch'] += 1
 
 # 设置学术配色
 academic_colors = {
-    'blue': '#1f77b4',       # DIT
-    'brown': '#8c564b',      # SGD
-    'red': '#d62728',        # corrupted
+    'blue': '#1f77b4',
+    'brown': '#8c564b',
+    'red': '#d62728',
+    'green': '#4daf4a'
 }
 
 # 设置 epoch 显示范围与刻度标签
@@ -31,17 +32,17 @@ adjusted_tick_labels = adjusted_xticks - 3                     # 实际显示标
 # 开始绘图
 plt.figure(figsize=(10, 6))
 
-# 绘制 DIT 曲线（蓝色方块）
+# 绘制 DIT 曲线（绿色菱形）
 plt.plot(
     dit_df['epoch'], dit_df['test_accuracy'],
-    label='DIT per epoch prune', color=academic_colors['blue'],
-    marker='s', markersize=10, linestyle='-'
+    label='Per-epoch TIM prune', color=academic_colors['green'],
+    marker='s', markersize=10, linestyle='-', zorder=10
 )
 
-# 绘制 SGD 曲线（棕色倒三角）
+# 绘制 SGD 曲线 （蓝色倒三角）
 plt.plot(
     sgd_df['epoch'], sgd_df['test_accuracy'],
-    label='SGD-influence prune', color=academic_colors['brown'],
+    label='Full-training TIM prune', color=academic_colors['blue'],
     marker='v', markersize=10, linestyle='-'
 )
 
